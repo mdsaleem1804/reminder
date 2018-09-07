@@ -1,0 +1,101 @@
+<div class="panel panel-primary" style="margin: 10px;">
+    <div class="panel-heading">
+
+        SALEEM FORM
+    </div>
+
+    <div class="form-row" style="margin-left: 250px;margin-right:250px;">
+        <div class="panel-body">
+            <div class="form-row masters-choose">
+                <div class="form-row card col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <span (click)="proceed('pass_tax_paying');"> TAX PAYING</span>
+                </div>
+                <div class="form-row card col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <span (click)="proceed('pass_insurance');"> INSURANCE</span>
+                </div>
+
+            </div>
+            <div *ngIf="div_token=='pass_tax_paying'">
+                <div class="panel-body">
+
+                    <form #taxPayForm="ngForm" novalidate autocomplete="off">
+                        <div class="form-row">
+                            <div class="col-lg-6 col-md-6 col-xs-12 form-row">
+                                <span class="inp-label {{taxpay.typeOfTax!='' ? 'top' : ''}}">
+                                    TYPE OF TAX</span>
+                                <input type="text" #f_type="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
+                                    name="f_type" [(ngModel)]="taxpay.typeOfTax" required>
+                                <div *ngIf="taxPayForm.submitted && f_type.invalid" class="inp-text mandatory-validation">
+                                    <div *ngIf="f_type.errors.required">TYPE OF TAX is required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 form-row">
+                                <span class="inp-label {{taxpay.typeOfTax!='' ? 'top' : ''}}">
+                                    TAX PAYING TO LOCATION</span>
+                                <input type="text" #disname="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
+                                    name="disname" [(ngModel)]="taxpay.typeOfTax" required>
+                                <div *ngIf="taxPayForm.submitted && disname.invalid" class="inp-text mandatory-validation">
+                                    <div *ngIf="disname.errors.required">TAX PAYING TO LOCATION is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="col-lg-6 col-md-6 col-xs-12 form-row">
+                                    <span class="inp-label {{taxpay.typeOfTax!='' ? 'top' : ''}}">
+                                        TYPE OF TAX</span>
+                                    <input type="text" #f_type="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
+                                        name="f_type" [(ngModel)]="taxpay.typeOfTax" required>
+                                    <div *ngIf="taxPayForm.submitted && f_type.invalid" class="inp-text mandatory-validation">
+                                        <div *ngIf="f_type.errors.required">TYPE OF TAX is required</div>
+                                    </div>
+                                </div>
+    
+                                <div class="col-lg-6 col-md-6 col-xs-12 form-row">
+                                    <span class="inp-label {{taxpay.typeOfTax!='' ? 'top' : ''}}">
+                                        TAX PAYING TO LOCATION</span>
+                                    <input type="text" #disname="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
+                                        name="disname" [(ngModel)]="taxpay.typeOfTax" required>
+                                    <div *ngIf="taxPayForm.submitted && disname.invalid" class="inp-text mandatory-validation">
+                                        <div *ngIf="disname.errors.required">TAX PAYING TO LOCATION is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="form-row">
+
+                            <div class="form-row col-lg-12 col-md-12 col-xs-12 text-center">
+                                <button type="submit" class="btn btn-default" (click)="taxPaySave(taxPayForm);">
+                                    {{(taxpay.taxPayId==0) ? 'Save': 'Update' }}</button>
+                                <button type="button" class="btn" (click)="cancel();">Cancel</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div *ngIf="div_token=='pass_insurance'">
+                <div class="panel-body">
+
+                    <form autocomplete="off">
+
+                        <div class="col-lg-6 col-md-6 col-xs-12 form-row">
+                            <span class="inp-label"> INSURANCE</span>
+                            <input type="text" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-row col-lg-12 col-md-12 col-xs-12 text-right">
+                                <button type="button" class="btn" (click)="cancel();">SAVE</button>
+                                <button type="button" class="btn" (click)="cancel();">CLEAR</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

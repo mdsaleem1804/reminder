@@ -23,8 +23,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-            ],
+              "src/scss/main.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/omega/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
+               ],
             "scripts": []
           },
           "configurations": {
