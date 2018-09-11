@@ -1,3 +1,3 @@
 export class SharedLib{
-      static gMainUrl:string = 'http://18.232.178.81/GbamAdminAPI/';
+      static gMainUrl:string = 'http://localhost:8080/';
 }

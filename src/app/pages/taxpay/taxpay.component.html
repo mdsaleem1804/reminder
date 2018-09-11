@@ -1,79 +1,121 @@
 <div class="panel panel-primary" style="margin: 10px;">
     <div class="panel-heading">
 
-        SALEEM FORM
+        SALEEM FORM 
     </div>
 
-    <div class="form-row" style="margin-left: 250px;margin-right:250px;">
+    <div class="form-row" style="margin-left: 50px;margin-right:20px;">
+        
         <div class="panel-body">
             <div class="form-row masters-choose">
                 <div class="form-row card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <span (click)="proceed('pass_tax_paying');"> TAX PAYING</span>
+                    <span (click)="proceed('pass_tax_paying');"> SALEEM</span>
                 </div>
                 <div class="form-row card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <span (click)="proceed('pass_insurance');"> INSURANCE</span>
+                    <span (click)="proceed('pass_insurance');"> SANAT</span>
+                   
                 </div>
-
+              
             </div>
             <div *ngIf="div_token=='pass_tax_paying'">
                 <div class="panel-body">
 
-                    <form #taxPayForm="ngForm" novalidate autocomplete="off">
+                    <form #taxPayForm="ngForm">
                         <div class="form-row">
                             <div class="col-lg-6 col-md-6 col-xs-12 form-row">
                                 <span class="inp-label {{taxpay.typeOfTax!='' ? 'top' : ''}}">
-                                    TYPE OF TAX</span>
-                                <input type="text" #f_type="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
-                                    name="f_type" [(ngModel)]="taxpay.typeOfTax" required>
-                                <div *ngIf="taxPayForm.submitted && f_type.invalid" class="inp-text mandatory-validation">
-                                    <div *ngIf="f_type.errors.required">TYPE OF TAX is required</div>
-                                </div>
+                                    typeOfTax</span>
+                                <input type="text" #f_typeOfTax="ngModel" floating maxlength="50" 
+                                class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
+                                    name="f_typeOfTax" [(ngModel)]="taxpay.typeOfTax" required>
+                
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-xs-12 form-row">
-                                <span class="inp-label {{taxpay.typeOfTax!='' ? 'top' : ''}}">
-                                    TAX PAYING TO LOCATION</span>
-                                <input type="text" #disname="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
-                                    name="disname" [(ngModel)]="taxpay.typeOfTax" required>
-                                <div *ngIf="taxPayForm.submitted && disname.invalid" class="inp-text mandatory-validation">
-                                    <div *ngIf="disname.errors.required">TAX PAYING TO LOCATION is required</div>
-                                </div>
-                            </div>
+                             <div class="col-lg-6 col-md-6 col-xs-12 form-row">
+                                <span class="inp-label {{taxpay.taxPayingToLocation!='' ? 'top' : ''}}">
+                                    taxPayingToLocation</span>
+                                <input type="text" #f_taxPayingToLocation="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
+                                    name="f_taxPayingToLocation" [(ngModel)]="taxpay.taxPayingToLocation" required>
+                      
+                            </div> 
                         </div>
-                        <div class="form-row">
-                                <div class="col-lg-6 col-md-6 col-xs-12 form-row">
-                                    <span class="inp-label {{taxpay.typeOfTax!='' ? 'top' : ''}}">
-                                        TYPE OF TAX</span>
-                                    <input type="text" #f_type="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
-                                        name="f_type" [(ngModel)]="taxpay.typeOfTax" required>
-                                    <div *ngIf="taxPayForm.submitted && f_type.invalid" class="inp-text mandatory-validation">
-                                        <div *ngIf="f_type.errors.required">TYPE OF TAX is required</div>
-                                    </div>
-                                </div>
-    
-                                <div class="col-lg-6 col-md-6 col-xs-12 form-row">
-                                    <span class="inp-label {{taxpay.typeOfTax!='' ? 'top' : ''}}">
-                                        TAX PAYING TO LOCATION</span>
-                                    <input type="text" #disname="ngModel" floating maxlength="50" class="inp-text mandatory capitalize col-lg-12 col-md-12 col-xs-12"
-                                        name="disname" [(ngModel)]="taxpay.typeOfTax" required>
-                                    <div *ngIf="taxPayForm.submitted && disname.invalid" class="inp-text mandatory-validation">
-                                        <div *ngIf="disname.errors.required">TAX PAYING TO LOCATION is required</div>
-                                    </div>
-                                </div>
-                            </div>
+                       
+
                         <div class="form-row">
 
                             <div class="form-row col-lg-12 col-md-12 col-xs-12 text-center">
-                                <button type="submit" class="btn btn-default" (click)="taxPaySave(taxPayForm);">
-                                    {{(taxpay.taxPayId==0) ? 'Save': 'Update' }}</button>
-                                <button type="button" class="btn" (click)="cancel();">Cancel</button>
+                                <button type="submit" 
+                                class="btn btn-default" 
+                                (click)="taxPaySave(taxPayForm);">
+                                {{(taxpay.taxPayId==0)
+                                    ? 'Save': 'Update' }}</button>
+                             <button type="button" class="btn" (click)="cancel();">Cancel</button>
                             </div>
 
                         </div>
                     </form>
+                        
+        <div class="col-lg-12 form-row">
+
+            <p-table [value]="arrTaxPay" 
+            [autoLayout]="true" [paginator]="true" 
+            [loading]="tableLoading" [rows]="2" [responsive]="true">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:55px">#</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr *ngIf="arrTaxPay.length == 0">
+                        <td colspan="6">
+                            <span class="norecords">No records available to be displayed..</span>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-typeOfTax let-index="rowIndex">
+                    <tr>
+                        <td>
+                            <span class="ui-column-title">#</span>{{index+1}}
+                        </td>
+                        <td>
+                            <span class="ui-column-title">A</span>{{typeOfTax.a}}</td>
+                        <td>
+                            <span class="ui-column-title">B</span>{{typeOfTax.b}}
+                        </td>
+                        <td>
+                                <span class="ui-column-title">A</span>{{typeOfTax.a}}</td>
+                            <td>
+                                <span class="ui-column-title">B</span>{{typeOfTax.b}}
+                            </td>
+                            <td>
+                                    <span class="ui-column-title">A</span>{{typeOfTax.a}}</td>
+                                <td>
+                                    <span class="ui-column-title">B</span>{{typeOfTax.b}}
+                                </td>
+                        <td>
+                            <span class="ui-column-title">Action</span>
+                            <span class="actionbuttons" pTooltip="Edit" tooltipPosition="bottom" (click)="fetch(typeOfTax.id);">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </span>
+                            <span class="actionbuttons" pTooltip="Delete" tooltipPosition="bottom" (click)="delete(typeOfTax.id);">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </span>
+                        </td>
+                    </tr>
+                </ng-template>
+
+        
+            </p-table>
+        </div>
                 </div>
             </div>
 
+        
 
             <div *ngIf="div_token=='pass_insurance'">
                 <div class="panel-body">
@@ -87,7 +129,11 @@
 
                         <div class="form-row">
                             <div class="form-row col-lg-12 col-md-12 col-xs-12 text-right">
-                                <button type="button" class="btn" (click)="cancel();">SAVE</button>
+                                <button type="submit" 
+                                class="btn btn-default" 
+                                (click)="taxPaySave(taxPayForm);">
+                                {{(taxpay.taxPayId==0)
+                                    ? 'Save': 'Update' }}</button>
                                 <button type="button" class="btn" (click)="cancel();">CLEAR</button>
                             </div>
                         </div>
@@ -99,3 +145,6 @@
         </div>
     </div>
 </div>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
+<<!--p-messages [(value)]="msgs1"></p-messages>!-->
+<p-growl [(value)]="msgs"></p-growl>

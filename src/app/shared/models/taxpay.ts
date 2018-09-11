@@ -7,7 +7,7 @@ export class TaxPay
     public taxNo:string;
     public payingDetails:string;
     public lastRenewedDate:Date;
-    public lastRenewedAmount:number =0;
+    public lastRenewedAmount:number;
     public nextRenewedDate:Date;
-    public nextRenewedAmount:number =0;
+    public nextRenewedAmount:number;
 }
